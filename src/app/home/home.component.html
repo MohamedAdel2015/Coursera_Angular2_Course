@@ -18,6 +18,15 @@
     </md-card-content>
   </md-card>
 
+  <div fxLayout="column">
+    <div [hidden]="dish" class="loading">
+      <md-spinner></md-spinner>
+    </div>
+    <div [hidden]="dish" class="loading">
+      <h4>Loading . . . Please Wait</h4>
+    </div>
+  </div>
+
   <md-card *ngIf="promotion" fxFlex>
     <md-card-header>
       <div md-card-avatar></div>
@@ -30,6 +39,15 @@
       <p>{{promotion.description}}</p>
     </md-card-content>
   </md-card>
+
+  <div fxLayout="column">
+    <div [hidden]="promotion" class="loading">
+      <md-spinner></md-spinner>
+    </div>
+    <div [hidden]="promotion" class="loading">
+      <h4>Loading . . . Please Wait</h4>
+    </div>
+  </div>
 
   <md-card *ngIf="leader" fxFlex>
     <md-card-header>
@@ -44,5 +62,14 @@
       <p>{{leader.description}}</p>
     </md-card-content>
   </md-card>
+
+  <div fxLayout="column">
+    <div [hidden]="leader" class="loading">
+      <md-spinner></md-spinner>
+    </div>
+    <div [hidden]="leader" class="loading">
+      <h4>Loading . . . Please Wait</h4>
+    </div>
+  </div>
 
 </div>

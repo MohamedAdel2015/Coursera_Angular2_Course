@@ -3,8 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MatToolbarModule, MatListModule, MatGridListModule, MatCardModule, MatButtonModule,
-  MatIconModule, MatDialogModule, MatInputModule, MatCheckboxModule, MatSlideToggleModule, MatSelectModule } from '@angular/material';
+import { MatToolbarModule, MatListModule, MatGridListModule, MatCardModule, MatButtonModule, MatIconModule,
+  MatDialogModule, MatInputModule, MatCheckboxModule, MatSlideToggleModule, MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import 'hammerjs';
@@ -56,7 +56,8 @@ import { LoginComponent } from './login/login.component';
     MatCheckboxModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     LoginComponent
