@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { MatToolbarModule, MatListModule, MatGridListModule, MatCardModule, MatButtonModule, MatIconModule, MatSliderModule,
   MatDialogModule, MatInputModule, MatCheckboxModule, MatSlideToggleModule, MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { baseURL } from './shared/baseurl';
 
 import 'hammerjs';
 
@@ -21,6 +22,7 @@ import { ContactComponent } from './contact/contact.component';
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
+import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
@@ -66,7 +68,9 @@ import { LoginComponent } from './login/login.component';
   providers: [
     DishService,
     PromotionService,
-    LeaderService
+    LeaderService,
+    ProcessHttpmsgService,
+    {provide: 'BaseURL', useValue: baseURL}
   ],
   bootstrap: [
     AppComponent
