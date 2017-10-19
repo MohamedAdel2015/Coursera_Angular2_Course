@@ -23,6 +23,7 @@ export class DishdetailComponent implements OnInit {
   commentForm: FormGroup;
   comment: Comment;
   errMess: string;
+  dishcopy = null;
 
   formErrors = {
     'author': '',
@@ -69,7 +70,6 @@ export class DishdetailComponent implements OnInit {
       const control = form.get(field);
       if (control && control.dirty && !control.valid) {
         const messages = this.validationMessages[field];
-        console.log(control.errors);
         for (const key in control.errors) {
           this.formErrors[field] += messages[key] + ' ';
         }
@@ -80,9 +80,9 @@ export class DishdetailComponent implements OnInit {
   ngOnInit() {
     this.dishService.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
     this.route.params
-      .switchMap((params: Params) => this.dishService.getDish(+params['id']))
-      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); },
-        errmess => this.errMess = <any>errmess);
+      .switchMap((params: Params) => { return this.dishService.getDish(+params['id']); })
+      .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); },
+        errmess => { this.dish = null; this.errMess = <any>errmess; });
   }
 
   setPrevNext(dishId: number) {
@@ -99,8 +99,9 @@ export class DishdetailComponent implements OnInit {
     this.comment = this.commentForm.value;
     const date = new Date();
     this.comment.date = date.toISOString();
-    console.log(this.comment);
-    this.dish.comments.push(this.comment);
+    this.dishcopy.comments.push(this.comment);
+    this.dishcopy.save()
+      .subscribe(dish => { this.dish = dish; console.log(this.dish); });
     this.commentForm.reset({
       author: '',
       comment: '',
