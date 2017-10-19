@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { MatToolbarModule, MatListModule, MatGridListModule, MatCardModule, MatButtonModule, MatIconModule, MatSliderModule,
   MatDialogModule, MatInputModule, MatCheckboxModule, MatSlideToggleModule, MatSelectModule, MatProgressSpinnerModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { baseURL } from './shared/baseurl';
+import { RestangularModule, Restangular } from 'ngx-restangular';
 
 import 'hammerjs';
 
@@ -19,6 +19,8 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 
+import { baseURL } from './shared/baseurl';
+import { RestangularConfigFactory } from './shared/restConfig';
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
@@ -60,7 +62,8 @@ import { LoginComponent } from './login/login.component';
     MatSlideToggleModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    MatSliderModule
+    MatSliderModule,
+    RestangularModule.forRoot(RestangularConfigFactory)
   ],
   entryComponents: [
     LoginComponent
