@@ -38,18 +38,22 @@
         <h3>{{promotion.name | uppercase}}</h3>
       </md-card-title>
     </md-card-header>
-    <img md-card-image src={{promotion.image}} alt={{promotion.name}}>
+    <img md-card-image src="{{BaseURL + promotion.image}}" alt={{promotion.name}}>
     <md-card-content>
       <p>{{promotion.description}}</p>
     </md-card-content>
   </md-card>
 
   <div fxLayout="column">
-    <div [hidden]="promotion" class="loading">
+    <div [hidden]="promotion || promotionErrMess" class="loading">
       <md-spinner></md-spinner>
     </div>
-    <div [hidden]="promotion" class="loading">
+    <div [hidden]="promotion || promotionErrMess" class="loading">
       <h4>Loading . . . Please Wait</h4>
+    </div>
+    <div *ngIf="promotionErrMess">
+      <h2>Error</h2>
+      <h4>{{promotionErrMess}}</h4>
     </div>
   </div>
 
@@ -60,7 +64,7 @@
         <h3>{{leader.name | uppercase}} {{leader.abbr}}</h3>
       </md-card-title>
     </md-card-header>
-    <img md-card-image src={{leader.image}} alt={{leader.name}}>
+    <img md-card-image src="{{BaseURL + leader.image}}" alt={{leader.name}}>
     <md-card-content>
       <h4>{{leader.designation}}</h4>
       <p>{{leader.description}}</p>
@@ -68,11 +72,15 @@
   </md-card>
 
   <div fxLayout="column">
-    <div [hidden]="leader" class="loading">
+    <div [hidden]="leader || leaderErrMess" class="loading">
       <md-spinner></md-spinner>
     </div>
-    <div [hidden]="leader" class="loading">
+    <div [hidden]="leader || leaderErrMess" class="loading">
       <h4>Loading . . . Please Wait</h4>
+    </div>
+    <div *ngIf="leaderErrMess">
+      <h2>Error</h2>
+      <h4>{{leaderErrMess}}</h4>
     </div>
   </div>
 

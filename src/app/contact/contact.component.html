@@ -39,9 +39,7 @@
   <div fxFlex fxFlexOffset="20px" class="form-size">
     <h3>Send us your Feedback</h3>
 
-    <p>{{ feedbackForm.value | json }}</p>
-
-    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" *ngIf="!feedback && !feedbackCopy" [@expand]>
       <p>
         <md-input-container class="half-width"
                             dividerColor="{{(formErrors.firstname) ? 'warn' : 'primary'}}">
@@ -97,6 +95,21 @@
       </p>
       <button type="submit" md-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
     </form>
+
+    <div *ngIf="feedback">
+      <h4>Submitting Form</h4><md-spinner></md-spinner>
+    </div>
+
+    <div *ngIf="feedbackCopy" [@expand]>
+      <h4>Your Submission</h4>
+      <p>First Name: <span>{{ feedbackCopy.firstname }}</span></p>
+      <p>Last Name: <span>{{ feedbackCopy.lastname }}</span></p>
+      <p>Tel. Number: <span>{{ feedbackCopy.telnum }}</span></p>
+      <p>Email: <span>{{ feedbackCopy.email }}</span></p>
+      <p>Contact You?: <span>{{ feedbackCopy.agree }}</span></p>
+      <p>How?: <span>{{ feedbackCopy.contacttype }}</span></p>
+      <p>Feedback: <span>{{ feedbackCopy.message }}</span></p>
+    </div>
   </div>
 
 </div>
