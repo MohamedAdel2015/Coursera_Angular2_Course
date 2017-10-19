@@ -19,11 +19,15 @@
   </md-card>
 
   <div fxLayout="column">
-    <div [hidden]="dish" class="loading">
+    <div [hidden]="dish || dishErrMess" class="loading">
       <md-spinner></md-spinner>
     </div>
-    <div [hidden]="dish" class="loading">
+    <div [hidden]="dish || dishErrMess" class="loading">
       <h4>Loading . . . Please Wait</h4>
+    </div>
+    <div *ngIf="dishErrMess">
+      <h2>Error</h2>
+      <h4>{{dishErrMess}}</h4>
     </div>
   </div>
 

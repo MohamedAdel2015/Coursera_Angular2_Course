@@ -21,11 +21,15 @@
   </div>
 
   <div fxLayout="column">
-    <div [hidden]="dishes" class="loading">
+    <div [hidden]="dishes || errMess" class="loading">
       <md-spinner></md-spinner>
     </div>
-    <div [hidden]="dishes" class="loading">
+    <div [hidden]="dishes || errMess" class="loading">
       <h4>Loading . . . Please Wait</h4>
+    </div>
+    <div *ngIf="errMess" class="loading">
+      <h2>Error</h2>
+      <h4>{{errMess}}</h4>
     </div>
   </div>
 
